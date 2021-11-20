@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>907</width>
+    <width>900</width>
     <height>420</height>
    </rect>
   </property>
@@ -18,99 +18,28 @@
     <rect>
      <x>20</x>
      <y>20</y>
-     <width>444</width>
-     <height>270</height>
+     <width>500</width>
+     <height>314</height>
     </rect>
    </property>
    <layout class="QGridLayout" name="gridLayout">
     <property name="spacing">
      <number>50</number>
     </property>
-    <item row="0" column="3">
-     <layout class="QVBoxLayout" name="verticalLayout_2">
-      <item>
-       <widget class="QGraphicsView" name="graphicsView_2"/>
-      </item>
-      <item>
-       <widget class="QLabel" name="label_3">
-        <property name="text">
-         <string>제품</string>
-        </property>
-        <property name="alignment">
-         <set>Qt::AlignCenter</set>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QLabel" name="label_4">
-        <property name="text">
-         <string>가격</string>
-        </property>
-        <property name="alignment">
-         <set>Qt::AlignCenter</set>
-        </property>
-       </widget>
-      </item>
-     </layout>
-    </item>
-    <item row="0" column="1">
-     <layout class="QVBoxLayout" name="verticalLayout_4">
-      <item>
-       <widget class="QGraphicsView" name="graphicsView_4"/>
-      </item>
-      <item>
-       <widget class="QLabel" name="label_7">
-        <property name="text">
-         <string>제품</string>
-        </property>
-        <property name="alignment">
-         <set>Qt::AlignCenter</set>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QLabel" name="label_8">
-        <property name="text">
-         <string>가격</string>
-        </property>
-        <property name="alignment">
-         <set>Qt::AlignCenter</set>
-        </property>
-       </widget>
-      </item>
-     </layout>
-    </item>
-    <item row="0" column="0">
-     <layout class="QVBoxLayout" name="verticalLayout_5">
-      <item>
-       <widget class="QGraphicsView" name="graphicsView_5"/>
-      </item>
-      <item>
-       <widget class="QLabel" name="label_9">
-        <property name="text">
-         <string>제품</string>
-        </property>
-        <property name="alignment">
-         <set>Qt::AlignCenter</set>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QLabel" name="label_10">
-        <property name="text">
-         <string>가격</string>
-        </property>
-        <property name="alignment">
-         <set>Qt::AlignCenter</set>
-        </property>
-       </widget>
-      </item>
-     </layout>
-    </item>
     <item row="0" column="2">
      <layout class="QVBoxLayout" name="verticalLayout_3">
+      <property name="spacing">
+       <number>10</number>
+      </property>
       <item>
-       <widget class="QGraphicsView" name="graphicsView_3"/>
+       <widget class="QLabel" name="label_23">
+        <property name="text">
+         <string/>
+        </property>
+        <property name="pixmap">
+         <pixmap resource="resources.qrc">:/drink_images/drink_images/pepsi.jpg</pixmap>
+        </property>
+       </widget>
       </item>
       <item>
        <widget class="QLabel" name="label_5">
@@ -136,8 +65,18 @@
     </item>
     <item row="1" column="0">
      <layout class="QVBoxLayout" name="verticalLayout_6">
+      <property name="spacing">
+       <number>10</number>
+      </property>
       <item>
-       <widget class="QGraphicsView" name="graphicsView_6"/>
+       <widget class="QLabel" name="label_25">
+        <property name="text">
+         <string/>
+        </property>
+        <property name="pixmap">
+         <pixmap resource="resources.qrc">:/drink_images/drink_images/pepsi.jpg</pixmap>
+        </property>
+       </widget>
       </item>
       <item>
        <widget class="QLabel" name="label_11">
@@ -163,8 +102,18 @@
     </item>
     <item row="1" column="1">
      <layout class="QVBoxLayout" name="verticalLayout_7">
+      <property name="spacing">
+       <number>10</number>
+      </property>
       <item>
-       <widget class="QGraphicsView" name="graphicsView_7"/>
+       <widget class="QLabel" name="label_26">
+        <property name="text">
+         <string/>
+        </property>
+        <property name="pixmap">
+         <pixmap resource="resources.qrc">:/drink_images/drink_images/pepsi.jpg</pixmap>
+        </property>
+       </widget>
       </item>
       <item>
        <widget class="QLabel" name="label_13">
@@ -188,13 +137,23 @@
       </item>
      </layout>
     </item>
-    <item row="1" column="2">
-     <layout class="QVBoxLayout" name="verticalLayout_8">
+    <item row="0" column="3">
+     <layout class="QVBoxLayout" name="verticalLayout_2">
+      <property name="spacing">
+       <number>10</number>
+      </property>
       <item>
-       <widget class="QGraphicsView" name="graphicsView_8"/>
+       <widget class="QLabel" name="label_24">
+        <property name="text">
+         <string/>
+        </property>
+        <property name="pixmap">
+         <pixmap resource="resources.qrc">:/drink_images/drink_images/pepsi.jpg</pixmap>
+        </property>
+       </widget>
       </item>
       <item>
-       <widget class="QLabel" name="label_15">
+       <widget class="QLabel" name="label_3">
         <property name="text">
          <string>제품</string>
         </property>
@@ -204,7 +163,81 @@
        </widget>
       </item>
       <item>
-       <widget class="QLabel" name="label_16">
+       <widget class="QLabel" name="label_4">
+        <property name="text">
+         <string>가격</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignCenter</set>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </item>
+    <item row="0" column="0">
+     <layout class="QVBoxLayout" name="verticalLayout_5">
+      <property name="spacing">
+       <number>10</number>
+      </property>
+      <item>
+       <widget class="QLabel" name="label_21">
+        <property name="text">
+         <string/>
+        </property>
+        <property name="pixmap">
+         <pixmap resource="resources.qrc">:/drink_images/drink_images/pepsi.jpg</pixmap>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLabel" name="label_9">
+        <property name="text">
+         <string>제품</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignCenter</set>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLabel" name="label_10">
+        <property name="text">
+         <string>가격</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignCenter</set>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </item>
+    <item row="0" column="1">
+     <layout class="QVBoxLayout" name="verticalLayout_4">
+      <property name="spacing">
+       <number>10</number>
+      </property>
+      <item>
+       <widget class="QLabel" name="label_22">
+        <property name="text">
+         <string/>
+        </property>
+        <property name="pixmap">
+         <pixmap resource="resources.qrc">:/drink_images/drink_images/pepsi.jpg</pixmap>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLabel" name="label_7">
+        <property name="text">
+         <string>제품</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignCenter</set>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLabel" name="label_8">
         <property name="text">
          <string>가격</string>
         </property>
@@ -217,8 +250,18 @@
     </item>
     <item row="1" column="3">
      <layout class="QVBoxLayout" name="verticalLayout_9">
+      <property name="spacing">
+       <number>10</number>
+      </property>
       <item>
-       <widget class="QGraphicsView" name="graphicsView_9"/>
+       <widget class="QLabel" name="label_28">
+        <property name="text">
+         <string/>
+        </property>
+        <property name="pixmap">
+         <pixmap resource="resources.qrc">:/drink_images/drink_images/pepsi.jpg</pixmap>
+        </property>
+       </widget>
       </item>
       <item>
        <widget class="QLabel" name="label_17">
@@ -242,13 +285,50 @@
       </item>
      </layout>
     </item>
+    <item row="1" column="2">
+     <layout class="QVBoxLayout" name="verticalLayout_8">
+      <property name="spacing">
+       <number>10</number>
+      </property>
+      <item>
+       <widget class="QLabel" name="label_27">
+        <property name="text">
+         <string/>
+        </property>
+        <property name="pixmap">
+         <pixmap resource="resources.qrc">:/drink_images/drink_images/pepsi.jpg</pixmap>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLabel" name="label_15">
+        <property name="text">
+         <string>제품</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignCenter</set>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLabel" name="label_16">
+        <property name="text">
+         <string>가격</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignCenter</set>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </item>
    </layout>
   </widget>
   <widget class="QSpinBox" name="spinBox">
    <property name="geometry">
     <rect>
      <x>290</x>
-     <y>360</y>
+     <y>370</y>
      <width>60</width>
      <height>31</height>
     </rect>
@@ -261,7 +341,7 @@
    <property name="geometry">
     <rect>
      <x>20</x>
-     <y>340</y>
+     <y>350</y>
      <width>56</width>
      <height>12</height>
     </rect>
@@ -274,7 +354,7 @@
    <property name="geometry">
     <rect>
      <x>20</x>
-     <y>360</y>
+     <y>370</y>
      <width>250</width>
      <height>30</height>
     </rect>
@@ -290,7 +370,7 @@ p, li { white-space: pre-wrap; }
   <widget class="QTextBrowser" name="textBrowser_2">
    <property name="geometry">
     <rect>
-     <x>520</x>
+     <x>540</x>
      <y>60</y>
      <width>281</width>
      <height>101</height>
@@ -308,7 +388,7 @@ p, li { white-space: pre-wrap; }
   <widget class="QLabel" name="label_2">
    <property name="geometry">
     <rect>
-     <x>520</x>
+     <x>540</x>
      <y>40</y>
      <width>151</width>
      <height>16</height>
@@ -361,7 +441,7 @@ p, li { white-space: pre-wrap; }
    <property name="geometry">
     <rect>
      <x>290</x>
-     <y>340</y>
+     <y>350</y>
      <width>56</width>
      <height>12</height>
     </rect>
@@ -374,7 +454,7 @@ p, li { white-space: pre-wrap; }
    <property name="geometry">
     <rect>
      <x>370</x>
-     <y>360</y>
+     <y>370</y>
      <width>64</width>
      <height>31</height>
     </rect>
@@ -397,7 +477,7 @@ p, li { white-space: pre-wrap; }
    <property name="geometry">
     <rect>
      <x>370</x>
-     <y>340</y>
+     <y>350</y>
      <width>56</width>
      <height>12</height>
     </rect>
@@ -407,6 +487,8 @@ p, li { white-space: pre-wrap; }
    </property>
   </widget>
  </widget>
- <resources/>
+ <resources>
+  <include location="resources.qrc"/>
+ </resources>
  <connections/>
 </ui>
