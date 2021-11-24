@@ -1,7 +1,6 @@
 import sys
 from PyQt5.QtWidgets import *
 from PyQt5 import uic
-#import resources_rc
 
 # UI 파일 연결
 # 단, UI파일은 Python코드 파일과 같은 디렉토리에 위치해야 한다.
