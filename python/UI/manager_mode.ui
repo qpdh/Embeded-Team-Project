@@ -78,8 +78,8 @@
    </property>
    <property name="icon">
     <iconset>
-     <normaloff>juice_ui/drink_images/1.png</normaloff>
-     <normalon>juice_ui/drink_images/1_c.png</normalon>juice_ui/drink_images/1.png</iconset>
+     <normaloff>drink_images/1.png</normaloff>
+     <normalon>drink_images/1_c.png</normalon>drink_images/1.png</iconset>
    </property>
    <property name="iconSize">
     <size>
@@ -205,8 +205,8 @@
    </property>
    <property name="icon">
     <iconset>
-     <normaloff>juice_ui/drink_images/2.png</normaloff>
-     <normalon>juice_ui/drink_images/2_c.png</normalon>juice_ui/drink_images/2.png</iconset>
+     <normaloff>drink_images/2.png</normaloff>
+     <normalon>drink_images/2_c.png</normalon>drink_images/2.png</iconset>
    </property>
    <property name="iconSize">
     <size>
@@ -308,8 +308,8 @@
    </property>
    <property name="icon">
     <iconset>
-     <normaloff>juice_ui/drink_images/3.png</normaloff>
-     <normalon>juice_ui/drink_images/3_c.png</normalon>juice_ui/drink_images/3.png</iconset>
+     <normaloff>drink_images/3.png</normaloff>
+     <normalon>drink_images/3_c.png</normalon>drink_images/3.png</iconset>
    </property>
    <property name="iconSize">
     <size>
@@ -405,8 +405,8 @@
    </property>
    <property name="icon">
     <iconset>
-     <normaloff>juice_ui/drink_images/0.png</normaloff>
-     <normalon>juice_ui/drink_images/0_c.png</normalon>juice_ui/drink_images/0.png</iconset>
+     <normaloff>drink_images/0.png</normaloff>
+     <normalon>drink_images/0_c.png</normalon>drink_images/0.png</iconset>
    </property>
    <property name="iconSize">
     <size>
@@ -454,8 +454,8 @@
    </property>
    <property name="icon">
     <iconset>
-     <normaloff>juice_ui/drink_images/4.png</normaloff>
-     <normalon>juice_ui/drink_images/4_c.png</normalon>juice_ui/drink_images/4.png</iconset>
+     <normaloff>drink_images/4.png</normaloff>
+     <normalon>drink_images/4_c.png</normalon>drink_images/4.png</iconset>
    </property>
    <property name="iconSize">
     <size>
@@ -484,8 +484,8 @@
    </property>
    <property name="icon">
     <iconset>
-     <normaloff>juice_ui/drink_images/7.png</normaloff>
-     <normalon>juice_ui/drink_images/7_c.png</normalon>juice_ui/drink_images/7.png</iconset>
+     <normaloff>drink_images/7.png</normaloff>
+     <normalon>drink_images/7_c.png</normalon>drink_images/7.png</iconset>
    </property>
    <property name="iconSize">
     <size>
@@ -533,8 +533,8 @@
    </property>
    <property name="icon">
     <iconset>
-     <normaloff>juice_ui/drink_images/6.png</normaloff>
-     <normalon>juice_ui/drink_images/6_c.png</normalon>juice_ui/drink_images/6.png</iconset>
+     <normaloff>drink_images/6.png</normaloff>
+     <normalon>drink_images/6_c.png</normalon>drink_images/6.png</iconset>
    </property>
    <property name="iconSize">
     <size>
@@ -550,6 +550,8 @@
    </property>
   </widget>
  </widget>
- <resources/>
+ <resources>
+  <include location="resources.qrc"/>
+ </resources>
  <connections/>
 </ui>
