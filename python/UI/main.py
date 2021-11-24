@@ -3,14 +3,13 @@ from PyQt5.QtWidgets import *
 from PyQt5 import uic
 from DrinkDBManagement import *
 from manager_mode import ManagerDialog
+from dialog_deposit import DepositDialog
 # UI 파일 연결
 # 단, UI파일은 Python코드 파일과 같은 디렉토리에 위치해야 한다.
 from_class = uic.loadUiType('main.ui')[0]
 
-
 # 화면을 띄우는데 사용되는 class 선언
 class WindowClass(QMainWindow, from_class):
-
     def __init__(self):
         super().__init__()
         self.setupUi(self)
@@ -34,7 +33,7 @@ class WindowClass(QMainWindow, from_class):
         self.initUI()
 
     def initUI(self):
-        # 640*420 크기 고정
+        # 900*500 크기 고정
         self.setFixedSize(900, 500)
 
         self.bringName_Cost(self.drinkNameList, self.drinkCostList)
@@ -73,6 +72,8 @@ class WindowClass(QMainWindow, from_class):
 
     # 입금 버튼 리스너
     def insertButtonListener(self):
+        win = DepositDialog()
+        win.showModal()
         print('insert button clicked')
 
     # 잔돈 반환 버튼 리스너
@@ -83,7 +84,6 @@ class WindowClass(QMainWindow, from_class):
     def directorButtonListener(self):
         win = ManagerDialog()
         win.showModal()
-
         print('director button clicked')
 
     def bringName_Cost(self, drinkNameList, drinkCostList):
