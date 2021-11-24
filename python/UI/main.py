@@ -10,7 +10,6 @@ from_class = uic.loadUiType('main.ui')[0]
 
 # 화면을 띄우는데 사용되는 class 선언
 class WindowClass(QMainWindow, from_class):
-    index = 0
 
     def __init__(self):
         super().__init__()
