@@ -31,13 +31,15 @@ class DrinkDBManagement:
 
     def print_all_drink(self):
         sql = """
-         select *
+         select name,cost
          from drinks;
          """
         self.curs.execute(sql)
         rows = self.curs.fetchall()
 
         self.print_table(rows)
+
+        return rows
 
     def print_drink(self, id):
         sql = """

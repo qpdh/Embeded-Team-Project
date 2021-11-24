@@ -62,7 +62,7 @@
        </widget>
       </item>
       <item>
-       <widget class="QLabel" name="label_15">
+       <widget class="QLabel" name="label_name6">
         <property name="styleSheet">
          <string notr="true">font-weight:600</string>
         </property>
@@ -75,7 +75,7 @@
        </widget>
       </item>
       <item>
-       <widget class="QLabel" name="label_16">
+       <widget class="QLabel" name="label_cost6">
         <property name="text">
          <string>가격</string>
         </property>
@@ -122,7 +122,7 @@
        </widget>
       </item>
       <item>
-       <widget class="QLabel" name="label_5">
+       <widget class="QLabel" name="label_name2">
         <property name="styleSheet">
          <string notr="true">font-weight:600</string>
         </property>
@@ -135,7 +135,7 @@
        </widget>
       </item>
       <item>
-       <widget class="QLabel" name="label_6">
+       <widget class="QLabel" name="label_cost2">
         <property name="text">
          <string>가격</string>
         </property>
@@ -182,7 +182,7 @@
        </widget>
       </item>
       <item>
-       <widget class="QLabel" name="label_11">
+       <widget class="QLabel" name="label_name4">
         <property name="styleSheet">
          <string notr="true">font-weight:600</string>
         </property>
@@ -195,7 +195,7 @@
        </widget>
       </item>
       <item>
-       <widget class="QLabel" name="label_12">
+       <widget class="QLabel" name="label_cost4">
         <property name="text">
          <string>가격</string>
         </property>
@@ -242,7 +242,7 @@
        </widget>
       </item>
       <item>
-       <widget class="QLabel" name="label_9">
+       <widget class="QLabel" name="label_name0">
         <property name="styleSheet">
          <string notr="true">font-weight:600</string>
         </property>
@@ -255,7 +255,7 @@
        </widget>
       </item>
       <item>
-       <widget class="QLabel" name="label_10">
+       <widget class="QLabel" name="label_cost0">
         <property name="text">
          <string>가격</string>
         </property>
@@ -302,7 +302,7 @@
        </widget>
       </item>
       <item>
-       <widget class="QLabel" name="label_7">
+       <widget class="QLabel" name="label_name1">
         <property name="styleSheet">
          <string notr="true">font-weight:600</string>
         </property>
@@ -315,7 +315,7 @@
        </widget>
       </item>
       <item>
-       <widget class="QLabel" name="label_8">
+       <widget class="QLabel" name="label_cost1">
         <property name="text">
          <string>가격</string>
         </property>
@@ -362,7 +362,7 @@
        </widget>
       </item>
       <item>
-       <widget class="QLabel" name="label_3">
+       <widget class="QLabel" name="label_name3">
         <property name="styleSheet">
          <string notr="true">font-weight:600</string>
         </property>
@@ -375,7 +375,7 @@
        </widget>
       </item>
       <item>
-       <widget class="QLabel" name="label_4">
+       <widget class="QLabel" name="label_cost3">
         <property name="text">
          <string>가격</string>
         </property>
@@ -422,7 +422,7 @@
        </widget>
       </item>
       <item>
-       <widget class="QLabel" name="label_13">
+       <widget class="QLabel" name="label_name5">
         <property name="styleSheet">
          <string notr="true">font-weight:600</string>
         </property>
@@ -435,7 +435,7 @@
        </widget>
       </item>
       <item>
-       <widget class="QLabel" name="label_14">
+       <widget class="QLabel" name="label_cost5">
         <property name="text">
          <string>가격</string>
         </property>
@@ -482,7 +482,7 @@
        </widget>
       </item>
       <item>
-       <widget class="QLabel" name="label_17">
+       <widget class="QLabel" name="label_name7">
         <property name="styleSheet">
          <string notr="true">font-weight:600</string>
         </property>
@@ -495,7 +495,7 @@
        </widget>
       </item>
       <item>
-       <widget class="QLabel" name="label_18">
+       <widget class="QLabel" name="label_cost7">
         <property name="text">
          <string>가격</string>
         </property>
