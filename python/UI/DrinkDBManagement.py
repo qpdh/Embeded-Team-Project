@@ -1,7 +1,7 @@
 import pymysql
 
 
-class BankManagement:
+class DrinkDBManagement:
     bank_db = pymysql.connect(host='localhost', user='root', password='root', db='vending_machine', charset='utf8')
 
     def __init__(self):
@@ -39,6 +39,18 @@ class BankManagement:
 
         self.print_table(rows)
 
+    def print_drink(self, id):
+        sql = """
+         select *
+         from drinks
+         where id = %s;
+         """
+        self.curs.execute(sql, id)
+        rows = self.curs.fetchall()
+
+        return rows[0]
+        self.print_table(rows)
+
     def insert_drink(self, name, cost, stock):
         sql = """
         insert into `drinks`
@@ -46,7 +58,7 @@ class BankManagement:
         """
 
         self.curs.execute(sql, (name, cost, stock))
-        BankManagement.bank_db.commit()
+        DrinkDBManagement.bank_db.commit()
 
     def purchase_drink(self, name):
         # 현재 선택된 음료의 재고 가져오기
@@ -73,13 +85,13 @@ class BankManagement:
         """
 
         self.curs.execute(sql, (stock - 1, name))
-        BankManagement.bank_db.commit()
+        DrinkDBManagement.bank_db.commit()
 
-
-bankManagement = BankManagement()
-bankManagement.print_all_drink()
-
-# bankManagement.insert_drink('test',20,20)
-
-bankManagement.purchase_drink('Pepsi')
-bankManagement.print_all_drink()
+#
+# bankManagement = DrinkDBManagement()
+# bankManagement.print_all_drink()
+#
+# # bankManagement.insert_drink('test',20,20)
+#
+# bankManagement.purchase_drink('Pepsi')
+# bankManagement.print_all_drink()
