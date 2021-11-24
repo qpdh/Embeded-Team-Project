@@ -13,7 +13,7 @@
   <property name="windowTitle">
    <string>Dialog</string>
   </property>
-  <widget class="QLabel" name="label_11">
+  <widget class="QLabel" name="label_cost6">
    <property name="geometry">
     <rect>
      <x>350</x>
@@ -29,7 +29,7 @@
     <set>Qt::AlignCenter</set>
    </property>
   </widget>
-  <widget class="QLabel" name="label_2">
+  <widget class="QLabel" name="label_name0">
    <property name="geometry">
     <rect>
      <x>70</x>
@@ -48,7 +48,7 @@
     <set>Qt::AlignCenter</set>
    </property>
   </widget>
-  <widget class="QLabel" name="label_5">
+  <widget class="QLabel" name="label_cost2">
    <property name="geometry">
     <rect>
      <x>350</x>
@@ -124,7 +124,7 @@
     <bool>true</bool>
    </property>
   </widget>
-  <widget class="QLabel" name="label_15">
+  <widget class="QLabel" name="label_cost4">
    <property name="geometry">
     <rect>
      <x>70</x>
@@ -140,7 +140,7 @@
     <set>Qt::AlignCenter</set>
    </property>
   </widget>
-  <widget class="QLabel" name="label_12">
+  <widget class="QLabel" name="label_name6">
    <property name="geometry">
     <rect>
      <x>350</x>
@@ -159,7 +159,7 @@
     <set>Qt::AlignCenter</set>
    </property>
   </widget>
-  <widget class="QLabel" name="label">
+  <widget class="QLabel" name="label_cost0">
    <property name="geometry">
     <rect>
      <x>70</x>
@@ -175,7 +175,7 @@
     <set>Qt::AlignCenter</set>
    </property>
   </widget>
-  <widget class="QLabel" name="label_3">
+  <widget class="QLabel" name="label_cost1">
    <property name="geometry">
     <rect>
      <x>210</x>
@@ -221,7 +221,7 @@
     <bool>true</bool>
    </property>
   </widget>
-  <widget class="QLabel" name="label_9">
+  <widget class="QLabel" name="label_cost7">
    <property name="geometry">
     <rect>
      <x>490</x>
@@ -237,7 +237,7 @@
     <set>Qt::AlignCenter</set>
    </property>
   </widget>
-  <widget class="QLabel" name="label_10">
+  <widget class="QLabel" name="label_name7">
    <property name="geometry">
     <rect>
      <x>490</x>
@@ -256,7 +256,7 @@
     <set>Qt::AlignCenter</set>
    </property>
   </widget>
-  <widget class="QLabel" name="label_6">
+  <widget class="QLabel" name="label_name2">
    <property name="geometry">
     <rect>
      <x>350</x>
@@ -275,7 +275,7 @@
     <set>Qt::AlignCenter</set>
    </property>
   </widget>
-  <widget class="QLabel" name="label_4">
+  <widget class="QLabel" name="label_name1">
    <property name="geometry">
     <rect>
      <x>210</x>
@@ -324,7 +324,7 @@
     <bool>true</bool>
    </property>
   </widget>
-  <widget class="QLabel" name="label_8">
+  <widget class="QLabel" name="label_name3">
    <property name="geometry">
     <rect>
      <x>490</x>
@@ -343,7 +343,7 @@
     <set>Qt::AlignCenter</set>
    </property>
   </widget>
-  <widget class="QLabel" name="label_7">
+  <widget class="QLabel" name="label_cost3">
    <property name="geometry">
     <rect>
      <x>490</x>
@@ -359,7 +359,7 @@
     <set>Qt::AlignCenter</set>
    </property>
   </widget>
-  <widget class="QPushButton" name="pushButton_9">
+  <widget class="QPushButton" name="pushButton_fill">
    <property name="geometry">
     <rect>
      <x>120</x>
@@ -375,7 +375,7 @@
     <string>재고 추가</string>
    </property>
   </widget>
-  <widget class="QLabel" name="label_13">
+  <widget class="QLabel" name="label_cost5">
    <property name="geometry">
     <rect>
      <x>210</x>
@@ -421,7 +421,7 @@
     <bool>true</bool>
    </property>
   </widget>
-  <widget class="QLabel" name="label_16">
+  <widget class="QLabel" name="label_name4">
    <property name="geometry">
     <rect>
      <x>70</x>
@@ -500,7 +500,7 @@
     <bool>true</bool>
    </property>
   </widget>
-  <widget class="QLabel" name="label_14">
+  <widget class="QLabel" name="label_name5">
    <property name="geometry">
     <rect>
      <x>210</x>
