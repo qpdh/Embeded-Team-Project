@@ -2,7 +2,7 @@ import pymysql
 
 
 class DrinkDBManagement:
-    bank_db = pymysql.connect(host='localhost', user='root', password='root', db='vending_machine', charset='utf8')
+    bank_db = pymysql.connect(host='embeded.clez5ac4cxmt.us-east-2.rds.amazonaws.com', user='root', password='rlaehdgus', db='VendingMachine', charset='utf8')
 
     def __init__(self):
         self.curs = self.bank_db.cursor(pymysql.cursors.DictCursor)
