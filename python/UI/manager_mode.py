@@ -33,10 +33,9 @@ class ManagerDialog(QDialog, from_class):
                               self.label_cost4, self.label_cost5, self.label_cost6, self.label_cost7]
 
     def initUI(self):
-        # 640*420 크기 고정
-        self.setFixedSize(700, 500)
-        self.bringName_Cost()
-
+        # 640*480 크기 고정
+        self.setFixedSize(640, 480)
+        self.bringName_Cost(self.drinkNameList, self.drinkCostList)
 
     def bringName_Cost(self, drinkNameList, drinkCostList):
         drinksInfo = self.drinkManagement.print_all_drink()
