@@ -46,7 +46,8 @@ class ManagerDialog(QDialog, from_class):
             name = drinksInfo[i]["name"]
             cost = drinksInfo[i]["cost"]
             drinkNameList[i].setText(name)
-            drinkCostList[i].setText(str(cost))
+            drinkCostList[i].setText(str(cost)+"원")
+            
 
     def showModal(self):
         return super().exec_()
