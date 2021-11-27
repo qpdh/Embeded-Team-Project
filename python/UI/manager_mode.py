@@ -11,10 +11,10 @@ from_class = uic.loadUiType('manager_mode.ui')[0]
 
 # 화면을 띄우는데 사용되는 class 선언
 class ManagerDialog(QDialog, from_class):
+
     def __init__(self):
         super().__init__()
         self.setupUi(self)
-        self.initUI()
 
         # DB 연결 클래스 호출
         self.drinkManagement = DrinkDBManagement()
@@ -32,6 +32,8 @@ class ManagerDialog(QDialog, from_class):
         self.drinkCostList = [self.label_cost0, self.label_cost1, self.label_cost2, self.label_cost3,
                               self.label_cost4, self.label_cost5, self.label_cost6, self.label_cost7]
 
+        self.initUI()
+
     def initUI(self):
         # 640*480 크기 고정
         self.setFixedSize(640, 480)
@@ -45,8 +47,7 @@ class ManagerDialog(QDialog, from_class):
             name = drinksInfo[i]["name"]
             cost = drinksInfo[i]["cost"]
             drinkNameList[i].setText(name)
-            drinkCostList[i].setText(str(cost)+"원")
-            
+            drinkCostList[i].setText(str(cost))
 
     def showModal(self):
         return super().exec_()

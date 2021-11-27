@@ -1,9 +1,15 @@
 import sys
+import os
 from PyQt5.QtWidgets import *
 from PyQt5 import uic
 from DrinkDBManagement import *
 from manager_mode import ManagerDialog
 from dialog_deposit import DepositDialog
+from IO_Modules.led_write import *
+from IO_Modules.text_lcd_write import *
+from IO_Modules.dip_switch_read import *
+from IO_Modules.dot_write import *
+
 # UI 파일 연결
 # 단, UI파일은 Python코드 파일과 같은 디렉토리에 위치해야 한다.
 from_class = uic.loadUiType('main.ui')[0]
@@ -29,6 +35,9 @@ class WindowClass(QMainWindow, from_class):
         # 음료수 가격 리스트
         self.drinkCostList = [self.label_cost0, self.label_cost1, self.label_cost2, self.label_cost3,
                               self.label_cost4, self.label_cost5, self.label_cost6, self.label_cost7]
+
+        # 선택 음료수 LED 값 리스트
+        self.drinkLEDValueList = [128,64,32,16,8,4,2,1]
 
         self.initUI()
 
@@ -65,10 +74,20 @@ class WindowClass(QMainWindow, from_class):
         self.label_stock.setText(str(drinkInfo["stock"]))
         self.label_cost.setText(str(drinkInfo["cost"]))
         print(i, 'Button Clicked')
+        write_led(self.drinkLEDValueList[i-1])
+        write_text_lcd(drinkInfo["name"],"stock "+str(drinkInfo["stock"])+" cost "+str(drinkInfo["cost"]))
+        # 구매 수량으 로바 꿀예정
+        write_dot(drinkInfo["stock"])
+
 
     # 구매 버튼 리스너
     def purchaseButtonListener(self):
         print('push button clicked')
+        for i in range(len(self.pushButtonList)):
+            if self.pushButtonList[i].isChecked():
+                drinkInfo = self.drinkManagement.print_drink(i+1)
+                self.mqtt('sensor/name', str(drinkInfo["name"])+'_sold')
+                self.mqtt('sensor/stock', str(drinkInfo["stock"])+'_remain')
 
     # 입금 버튼 리스너
     def insertButtonListener(self):
@@ -82,9 +101,13 @@ class WindowClass(QMainWindow, from_class):
 
     # 관리자 모드 버튼 리스너
     def directorButtonListener(self):
-        win = ManagerDialog()
-        win.showModal()
-        print('director button clicked')
+        password = read_dip_switch()
+        if password == 170:
+            win = ManagerDialog()
+            win.showModal()
+            print('director button clicked')
+        else:
+            print('password error')
 
     def bringName_Cost(self, drinkNameList, drinkCostList):
         drinksInfo = self.drinkManagement.print_all_drink()
@@ -94,7 +117,11 @@ class WindowClass(QMainWindow, from_class):
             name = drinksInfo[i]["name"]
             cost = drinksInfo[i]["cost"]
             drinkNameList[i].setText(name)
-            drinkCostList[i].setText(str(cost)+"원")
+            drinkCostList[i].setText(str(cost))
+    def mqtt(self, topic, data):
+        command = 'mosquitto_pub -d -t '+topic+ ' -m '+data
+        print(command)
+        os.system(command)
 
 
 if __name__ == "__main__":
