@@ -5,6 +5,8 @@ from python.VendingMachine.Module.DrinkDBManagement import *
 from manager_mode import ManagerDialog
 from dialog_deposit import DepositDialog
 
+import time
+
 import threading
 
 # from IO_Modules.led_write import *
@@ -81,7 +83,6 @@ class WindowClass(QMainWindow, from_class):
 
     # 쓰레드 동작
     def checkControl(self):
-        import time
         while self.controlFlag:
             print('test')
             time.sleep(1)
@@ -162,10 +163,12 @@ class WindowClass(QMainWindow, from_class):
     def stopControlThread(self):
         self.controlFlag = False
         self.controlThread.join()
+        time.sleep(1)
 
     def startContolThread(self):
         self.controlFlag = True
         self.controlThread = threading.Thread(target=self.checkControl)
+        self.controlThread.daemon = True
         self.controlThread.start()
 
     # 관리자 모드 버튼 리스너

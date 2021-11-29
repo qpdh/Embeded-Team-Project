@@ -2,7 +2,7 @@ from PyQt5.QtWidgets import *
 from PyQt5 import uic
 from python.VendingMachine.Module.DrinkDBManagement import DrinkDBManagement
 import threading
-
+import time
 # import resources_rc
 
 # VendingMachine 파일 연결
@@ -75,6 +75,7 @@ class ManagerDialog(QDialog, from_class):
     def stopControlThread(self):
         self.controlFlag = False
         self.controlThread.join()
+        time.sleep(1)
 
     def startContolThread(self):
         self.controlFlag = True
@@ -83,7 +84,6 @@ class ManagerDialog(QDialog, from_class):
 
     # 쓰레드 동작
     def checkControl(self):
-        import time
         while self.controlFlag:
             print('test manager')
             time.sleep(1)

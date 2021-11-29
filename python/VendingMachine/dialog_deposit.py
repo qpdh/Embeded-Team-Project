@@ -1,6 +1,7 @@
 from PyQt5.QtWidgets import *
 from PyQt5 import uic
 import threading
+import time
 
 # import resources_rc
 
@@ -49,6 +50,7 @@ class DepositDialog(QDialog, from_class):
     def stopControlThread(self):
         self.controlFlag = False
         self.controlThread.join()
+        time.sleep(1)
 
     def startContolThread(self):
         self.controlFlag = True
@@ -57,7 +59,6 @@ class DepositDialog(QDialog, from_class):
 
     # 쓰레드 동작
     def checkControl(self):
-        import time
         while self.controlFlag:
             print('test deposit')
             time.sleep(1)
