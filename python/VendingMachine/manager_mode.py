@@ -1,6 +1,7 @@
 from PyQt5.QtWidgets import *
 from PyQt5 import uic
 from python.VendingMachine.Module.DrinkDBManagement import DrinkDBManagement
+import threading
 
 # import resources_rc
 
@@ -16,7 +17,10 @@ class ManagerDialog(QDialog, from_class):
         super().__init__()
         self.setupUi(self)
 
-
+        # 쓰레드 선언
+        self.controlThread = None
+        # control Flag 선언
+        self.controlFlag = False
 
         # DB 연결 클래스 호출
         self.drinkManagement = DrinkDBManagement()
@@ -33,7 +37,7 @@ class ManagerDialog(QDialog, from_class):
         # 음료수 가격 리스트
         self.drinkCostList = [self.label_cost0, self.label_cost1, self.label_cost2, self.label_cost3,
                               self.label_cost4, self.label_cost5, self.label_cost6, self.label_cost7]
-        
+
         # 잔고 리스트
 
         self.initUI()
@@ -47,14 +51,16 @@ class ManagerDialog(QDialog, from_class):
 
         self.pushButton_fill.clicked.connect(self.fillDrink)
 
+        self.startContolThread()
+
     def fillDrink(self):
         for i in range(len(self.pushButtonList)):
             if self.pushButtonList[i].isChecked():
-                print(i,'checked')
+                print(i, 'checked')
                 drinkInfo = self.drinkManagement.fill_drink(i + 1)
-                print(i,'checked end')
-                #self.mqtt('sensor/name', str(drinkInfo["name"]) + '_filled')
-                #self.mqtt('sensor/stock', str(drinkInfo["stock"]) + '_remain')
+                print(i, 'checked end')
+                # self.mqtt('sensor/name', str(drinkInfo["name"]) + '_filled')
+                # self.mqtt('sensor/stock', str(drinkInfo["stock"]) + '_remain')
 
     def bringName_Cost(self, drinkNameList, drinkCostList):
         drinksInfo = self.drinkManagement.print_all_drink()
@@ -66,9 +72,28 @@ class ManagerDialog(QDialog, from_class):
             drinkNameList[i].setText(name)
             drinkCostList[i].setText(str(cost))
 
+    def stopControlThread(self):
+        self.controlFlag = False
+        self.controlThread.join()
+
+    def startContolThread(self):
+        self.controlFlag = True
+        self.controlThread = threading.Thread(target=self.checkControl)
+        self.controlThread.start()
+
+    # 쓰레드 동작
+    def checkControl(self):
+        import time
+        while self.controlFlag:
+            print('test manager')
+            time.sleep(1)
+
     def showModal(self):
         return super().exec_()
 
+    def closeEvent(self, QCloseEvent):
+        self.stopControlThread()
+        QCloseEvent.accept()
 #
 # if __name__ == "__main__":
 #     # QApplication 프로그램을 실행시켜주는 클래스

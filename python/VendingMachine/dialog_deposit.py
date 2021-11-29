@@ -1,5 +1,6 @@
 from PyQt5.QtWidgets import *
 from PyQt5 import uic
+import threading
 
 # import resources_rc
 
@@ -11,12 +12,18 @@ from_class = uic.loadUiType('./ui/dialog_deposit.ui')[0]
 # 화면을 띄우는데 사용되는 class 선언
 class DepositDialog(QDialog, from_class):
     def __init__(self, wallet):
-        print('생성자 호출')
         super().__init__()
         self.setupUi(self)
-        self.initUI()
+
+
+        # 쓰레드 선언
+        self.controlThread = None
+        # control Flag 선언
+        self.controlFlag = False
 
         self.wallet = wallet
+
+        self.initUI()
 
     def initUI(self):
         # 140*240 크기 고정
@@ -26,6 +33,8 @@ class DepositDialog(QDialog, from_class):
         self.pushButton_100.clicked.connect(lambda: self.deposit(100))
         self.pushButton_500.clicked.connect(lambda: self.deposit(500))
 
+        self.startContolThread()
+
     def deposit(self, value):
         self.wallet += value
         # TODO FND에 값 변경할 것
@@ -34,4 +43,21 @@ class DepositDialog(QDialog, from_class):
         return super().exec_()
 
     def closeEvent(self, QCloseEvent):
+        self.stopControlThread()
         QCloseEvent.accept()
+
+    def stopControlThread(self):
+        self.controlFlag = False
+        self.controlThread.join()
+
+    def startContolThread(self):
+        self.controlFlag = True
+        self.controlThread = threading.Thread(target=self.checkControl)
+        self.controlThread.start()
+
+    # 쓰레드 동작
+    def checkControl(self):
+        import time
+        while self.controlFlag:
+            print('test deposit')
+            time.sleep(1)

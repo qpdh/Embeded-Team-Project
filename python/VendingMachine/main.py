@@ -5,6 +5,8 @@ from python.VendingMachine.Module.DrinkDBManagement import *
 from manager_mode import ManagerDialog
 from dialog_deposit import DepositDialog
 
+import threading
+
 # from IO_Modules.led_write import *
 # from IO_Modules.text_lcd_write import *
 # from IO_Modules.dip_switch_read import *
@@ -20,6 +22,11 @@ class WindowClass(QMainWindow, from_class):
     def __init__(self):
         super().__init__()
         self.setupUi(self)
+
+        # 쓰레드 선언
+        self.controlThread = None
+        # control Flag 선언
+        self.controlFlag = False
 
         # DB 연결 클래스 호출
         self.drinkManagement = DrinkDBManagement()
@@ -67,6 +74,17 @@ class WindowClass(QMainWindow, from_class):
         self.pushButton_director.clicked.connect(self.directorButtonListener)
 
         self.pushButtonList[0].click()
+        self.pushButtonList[0].setFocus()
+
+        # 쓰레드 시작
+        self.startContolThread()
+
+    # 쓰레드 동작
+    def checkControl(self):
+        import time
+        while self.controlFlag:
+            print('test')
+            time.sleep(1)
 
     # 제품 버튼 리스너
     def setOnClickedListener(self, i):
@@ -77,7 +95,6 @@ class WindowClass(QMainWindow, from_class):
         print(i, 'Button Clicked')
         # write_led(self.drinkLEDValueList[i-1])
         # write_text_lcd(drinkInfo["name"],"stock "+str(drinkInfo["stock"])+" cost "+str(drinkInfo["cost"]))
-        # 구매 수량으 로바 꿀예정
         # write_dot(drinkInfo["stock"])
 
     # 구매 버튼 리스너
@@ -114,10 +131,15 @@ class WindowClass(QMainWindow, from_class):
 
     # 입금 버튼 리스너
     def insertButtonListener(self):
+        self.stopControlThread()
         win = DepositDialog(int(self.label_wallet.text()))
         win.showModal()
 
+        self.startContolThread()
         self.label_wallet.setText(str(win.wallet))
+
+        self.pushButtonList[0].click()
+        self.pushButtonList[0].setFocus()
         print('insert button clicked')
 
     # 잔고 값이 바뀌면 호출하는 함수
@@ -134,15 +156,29 @@ class WindowClass(QMainWindow, from_class):
         else:
             self.changedWallet(0)
             self.textEdit_system.append('잔돈이 반환되었습니다.\n')
+
         print('return button clicked')
+
+    def stopControlThread(self):
+        self.controlFlag = False
+        self.controlThread.join()
+
+    def startContolThread(self):
+        self.controlFlag = True
+        self.controlThread = threading.Thread(target=self.checkControl)
+        self.controlThread.start()
 
     # 관리자 모드 버튼 리스너
     def directorButtonListener(self):
         # password = read_dip_switch()
         password = 170
         if password == 170:
+            self.stopControlThread()
             win = ManagerDialog()
             win.showModal()
+            self.pushButtonList[0].click()
+            self.pushButtonList[0].setFocus()
+            self.startContolThread()
             print('director button clicked')
 
         else:
