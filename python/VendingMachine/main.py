@@ -1,18 +1,19 @@
 import sys
-import os
 from PyQt5.QtWidgets import *
 from PyQt5 import uic
-from DrinkDBManagement import *
+from python.VendingMachine.Module.DrinkDBManagement import *
 from manager_mode import ManagerDialog
 from dialog_deposit import DepositDialog
-from IO_Modules.led_write import *
-from IO_Modules.text_lcd_write import *
-from IO_Modules.dip_switch_read import *
-from IO_Modules.dot_write import *
 
-# UI 파일 연결
+# from IO_Modules.led_write import *
+# from IO_Modules.text_lcd_write import *
+# from IO_Modules.dip_switch_read import *
+# from IO_Modules.dot_write import *
+
+# VendingMachine 파일 연결
 # 단, UI파일은 Python코드 파일과 같은 디렉토리에 위치해야 한다.
-from_class = uic.loadUiType('main.ui')[0]
+from_class = uic.loadUiType('./ui/main.ui')[0]
+
 
 # 화면을 띄우는데 사용되는 class 선언
 class WindowClass(QMainWindow, from_class):
@@ -37,7 +38,7 @@ class WindowClass(QMainWindow, from_class):
                               self.label_cost4, self.label_cost5, self.label_cost6, self.label_cost7]
 
         # 선택 음료수 LED 값 리스트
-        self.drinkLEDValueList = [128,64,32,16,8,4,2,1]
+        self.drinkLEDValueList = [128, 64, 32, 16, 8, 4, 2, 1]
 
         self.initUI()
 
@@ -74,39 +75,78 @@ class WindowClass(QMainWindow, from_class):
         self.label_stock.setText(str(drinkInfo["stock"]))
         self.label_cost.setText(str(drinkInfo["cost"]))
         print(i, 'Button Clicked')
-        write_led(self.drinkLEDValueList[i-1])
-        write_text_lcd(drinkInfo["name"],"stock "+str(drinkInfo["stock"])+" cost "+str(drinkInfo["cost"]))
+        # write_led(self.drinkLEDValueList[i-1])
+        # write_text_lcd(drinkInfo["name"],"stock "+str(drinkInfo["stock"])+" cost "+str(drinkInfo["cost"]))
         # 구매 수량으 로바 꿀예정
-        write_dot(drinkInfo["stock"])
-
+        # write_dot(drinkInfo["stock"])
 
     # 구매 버튼 리스너
     def purchaseButtonListener(self):
         print('push button clicked')
         for i in range(len(self.pushButtonList)):
             if self.pushButtonList[i].isChecked():
-                drinkInfo = self.drinkManagement.print_drink(i+1)
-                self.mqtt('sensor/name', str(drinkInfo["name"])+'_sold')
-                self.mqtt('sensor/stock', str(drinkInfo["stock"])+'_remain')
+                drinkInfo = self.drinkManagement.print_drink(i + 1)
+                self.mqtt('sensor/name', str(drinkInfo["name"]) + '_sold')
+                self.mqtt('sensor/stock', str(drinkInfo["stock"]) + '_remain')
+
+                wallet = int(self.label_wallet.text())
+                stock = int(self.label_stock.text())
+                money = int(self.label_cost.text())
+                # 살 수 없는 경우
+                # 1. 잔고가 부족할 때
+                if wallet < money:
+                    self.textEdit_system.append('돈이 부족합니다.\n')
+                    return
+                # 2. 재고가 없을 때
+                if stock == 0:
+                    self.textEdit_system.append('해당 품목의 재고가 없습니다.\n')
+                    return
+                # 살 수 있는 경우
+
+                wallet -= money
+                stock -= 1
+                self.changedWallet(wallet)
+                self.drinkManagement.purchase_drink(i + 1)
+                self.label_stock.setText(str(stock))
+                self.textEdit_system.append('맛있게 드십시오.\n')
+
+                break
 
     # 입금 버튼 리스너
     def insertButtonListener(self):
-        win = DepositDialog()
+        win = DepositDialog(int(self.label_wallet.text()))
         win.showModal()
+
+        self.label_wallet.setText(str(win.wallet))
         print('insert button clicked')
+
+    # 잔고 값이 바뀌면 호출하는 함수
+    # TODO FND에 반영할 것
+    def changedWallet(self, money):
+        self.label_wallet.setText(str(money))
+        pass
 
     # 잔돈 반환 버튼 리스너
     def returnButtonListener(self):
+        myMoney = int(self.label_wallet.text())
+        if myMoney == 0:
+            self.textEdit_system.append('반환할 돈이 존재하지 않습니다.\n')
+        else:
+            self.changedWallet(0)
+            self.textEdit_system.append('잔돈이 반환되었습니다.\n')
         print('return button clicked')
 
     # 관리자 모드 버튼 리스너
     def directorButtonListener(self):
-        password = read_dip_switch()
+        # password = read_dip_switch()
+        password = 170
         if password == 170:
             win = ManagerDialog()
             win.showModal()
             print('director button clicked')
+
         else:
+            self.textEdit_system.append('비밀번호가 일치하지 않습니다.\n')
             print('password error')
 
     def bringName_Cost(self, drinkNameList, drinkCostList):
@@ -118,10 +158,11 @@ class WindowClass(QMainWindow, from_class):
             cost = drinksInfo[i]["cost"]
             drinkNameList[i].setText(name)
             drinkCostList[i].setText(str(cost))
+
     def mqtt(self, topic, data):
-        command = 'mosquitto_pub -d -t '+topic+ ' -m '+data
+        command = 'mosquitto_pub -d -t ' + topic + ' -m ' + data
         print(command)
-        os.system(command)
+    # os.system(command)
 
 
 if __name__ == "__main__":

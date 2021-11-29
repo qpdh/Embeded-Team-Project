@@ -1,12 +1,12 @@
-import sys
 from PyQt5.QtWidgets import *
 from PyQt5 import uic
-from DrinkDBManagement import DrinkDBManagement
+from python.VendingMachine.Module.DrinkDBManagement import DrinkDBManagement
+
 # import resources_rc
 
-# UI 파일 연결
+# VendingMachine 파일 연결
 # 단, UI파일은 Python코드 파일과 같은 디렉토리에 위치해야 한다.
-from_class = uic.loadUiType('manager_mode.ui')[0]
+from_class = uic.loadUiType('./ui/manager_mode.ui')[0]
 
 
 # 화면을 띄우는데 사용되는 class 선언
@@ -15,6 +15,8 @@ class ManagerDialog(QDialog, from_class):
     def __init__(self):
         super().__init__()
         self.setupUi(self)
+
+
 
         # DB 연결 클래스 호출
         self.drinkManagement = DrinkDBManagement()
@@ -31,6 +33,8 @@ class ManagerDialog(QDialog, from_class):
         # 음료수 가격 리스트
         self.drinkCostList = [self.label_cost0, self.label_cost1, self.label_cost2, self.label_cost3,
                               self.label_cost4, self.label_cost5, self.label_cost6, self.label_cost7]
+        
+        # 잔고 리스트
 
         self.initUI()
 
@@ -38,6 +42,19 @@ class ManagerDialog(QDialog, from_class):
         # 640*480 크기 고정
         self.setFixedSize(640, 480)
         self.bringName_Cost(self.drinkNameList, self.drinkCostList)
+
+        self.pushButtonList[0].click()
+
+        self.pushButton_fill.clicked.connect(self.fillDrink)
+
+    def fillDrink(self):
+        for i in range(len(self.pushButtonList)):
+            if self.pushButtonList[i].isChecked():
+                print(i,'checked')
+                drinkInfo = self.drinkManagement.fill_drink(i + 1)
+                print(i,'checked end')
+                #self.mqtt('sensor/name', str(drinkInfo["name"]) + '_filled')
+                #self.mqtt('sensor/stock', str(drinkInfo["stock"]) + '_remain')
 
     def bringName_Cost(self, drinkNameList, drinkCostList):
         drinksInfo = self.drinkManagement.print_all_drink()

@@ -550,6 +550,17 @@
    </property>
   </widget>
  </widget>
+ <tabstops>
+  <tabstop>pushButton_drink0</tabstop>
+  <tabstop>pushButton_drink1</tabstop>
+  <tabstop>pushButton_drink2</tabstop>
+  <tabstop>pushButton_drink3</tabstop>
+  <tabstop>pushButton_drink4</tabstop>
+  <tabstop>pushButton_drink5</tabstop>
+  <tabstop>pushButton_drink6</tabstop>
+  <tabstop>pushButton_drink7</tabstop>
+  <tabstop>pushButton_fill</tabstop>
+ </tabstops>
  <resources/>
  <connections/>
 </ui>

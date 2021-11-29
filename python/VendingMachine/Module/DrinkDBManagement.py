@@ -29,6 +29,32 @@ class DrinkDBManagement:
             print(tavnit % tuple(row.values()))
         print(separator)
 
+    def purchase_drink(self, i):
+
+        sql = """
+        update drinks
+        set stock = stock - 1
+        where id=%s;
+        """
+
+        self.curs.execute(sql, i)
+        DrinkDBManagement.bank_db.commit()
+
+        return self.print_drink(i)
+
+    def fill_drink(self, i):
+
+        sql = """
+        update drinks
+        set stock = 9
+        where id=%s;
+        """
+
+        self.curs.execute(sql, i)
+        DrinkDBManagement.bank_db.commit()
+
+        return self.print_drink(i)
+
     def print_all_drink(self):
         sql = """
          select name,cost
@@ -51,7 +77,6 @@ class DrinkDBManagement:
         rows = self.curs.fetchall()
 
         return rows[0]
-        self.print_table(rows)
 
     def insert_drink(self, name, cost, stock):
         sql = """
@@ -62,32 +87,32 @@ class DrinkDBManagement:
         self.curs.execute(sql, (name, cost, stock))
         DrinkDBManagement.bank_db.commit()
 
-    def purchase_drink(self, name):
-        # 현재 선택된 음료의 재고 가져오기
-        sql = """
-         select name, cost, stock
-         from drinks
-         where name = %s;
-         """
-        self.curs.execute(sql, name)
-        rows = self.curs.fetchone()
-
-        cost = rows['cost']
-        stock = rows['stock']
-
-        print('가져온 비용 : ', cost)
-        print('가져온 재고 : ', stock)
-
-        # todo 비용이 부족하거나 재고가 부족하면 예외처리
-
-        sql = """
-        update `drinks`
-        set stock=%s
-        where name = %s
-        """
-
-        self.curs.execute(sql, (stock - 1, name))
-        DrinkDBManagement.bank_db.commit()
+    # def purchase_drink(self, name):
+    #     # 현재 선택된 음료의 재고 가져오기
+    #     sql = """
+    #      select name, cost, stock
+    #      from drinks
+    #      where name = %s;
+    #      """
+    #     self.curs.execute(sql, name)
+    #     rows = self.curs.fetchone()
+    #
+    #     cost = rows['cost']
+    #     stock = rows['stock']
+    #
+    #     print('가져온 비용 : ', cost)
+    #     print('가져온 재고 : ', stock)
+    #
+    #     # todo 비용이 부족하거나 재고가 부족하면 예외처리
+    #
+    #     sql = """
+    #     update `drinks`
+    #     set stock=%s
+    #     where name = %s
+    #     """
+    #
+    #     self.curs.execute(sql, (stock - 1, name))
+    #     DrinkDBManagement.bank_db.commit()
 
 #
 # bankManagement = DrinkDBManagement()
