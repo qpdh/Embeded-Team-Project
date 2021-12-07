@@ -60,7 +60,7 @@ class WindowClass(QMainWindow, from_class):
 
     def initUI(self):
         # 900*500 크기 고정
-        self.setFixedSize(900, 500)
+        self.setFixedSize(910, 430)
 
         self.bringName_Cost(self.drinkNameList, self.drinkCostList)
         # 버튼에 기능을 연결하는 코드
