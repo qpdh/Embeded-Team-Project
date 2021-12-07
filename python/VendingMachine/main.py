@@ -5,6 +5,8 @@ from PyQt5 import uic
 from Module.DrinkDBManagement import *
 from manager_mode import ManagerDialog
 from dialog_deposit import DepositDialog
+from picamera import PiCamera
+from datetime import datetime
 
 import time
 
@@ -229,6 +231,11 @@ class WindowClass(QMainWindow, from_class):
 
     # 관리자 모드 버튼 리스너
     def directorButtonListener(self):
+        camera = PiCamera()
+        path = './capture/' + str(datetime.now().strftime('%Y-%m-%d_%H-%M-%S')) +'.jpg'
+        camera.capture(path)
+        camera.close()
+        
         password = read_dip_switch()
         self.mqtt('sensor/name', '_')
         self.mqtt('sensor/stock', '_')

@@ -44,7 +44,10 @@ class DepositDialog(QDialog, from_class):
 
     def deposit(self, value):
         self.wallet += value
-        write_fnd(self.wallet)
+        if self.wallet >= 10000:
+            self.wallet -= value
+        else:
+            write_fnd(self.wallet)
         # TODO FND에 값 변경할 것
 
     def showModal(self):
